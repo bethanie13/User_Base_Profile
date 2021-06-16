@@ -9,6 +9,7 @@ from userbase.models import User
 class RegistrationForm(FlaskForm):
     firstname = StringField('First Name', validators=[DataRequired(), Length(min=2, max=20)])
     lastname = StringField('Last Name', validators=[DataRequired(), Length(min=2, max=20)])
+    department = StringField('Department ', validators=[DataRequired(), Length(min=2, max=30)])
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
@@ -33,10 +34,10 @@ class LoginForm(FlaskForm):
 
 
 class UpdateAccountForm(FlaskForm):
-    firstname = StringField('First Name', validators=[DataRequired(), Length(min=2, max=20)])
-    lastname = StringField('Last Name', validators=[DataRequired(), Length(min=2, max=20)])
-    email = StringField('Email', validators=[DataRequired(), Email()])
+    firstname = StringField('First Name', validators=[DataRequired(), Length(min=2, max=60)])
+    lastname = StringField('Last Name', validators=[DataRequired(), Length(min=2, max=60)])
     department = StringField('Department', validators=[DataRequired(), Length(min=2, max=20)])
+    email = StringField('Email', validators=[DataRequired(), Email()])
     picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Update')
 
