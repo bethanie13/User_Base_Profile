@@ -5,6 +5,7 @@
         <img class="rounded-circle account-img" src="{{ image_file }}">
         <div class="media-body">
           <h2 class="account-heading">{{ current_user.firstname + " " + current_user.lastname}}</h2>
+          <h5 class="text-secondary">{{ "Department: " }}</h5>
           <h5 class="text-secondary">{{ "Email: " + current_user.email }}</h5>
         </div>
       </div>
@@ -53,6 +54,20 @@
                         </div>
                     {% else %}
                         {{ form.email(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.department.label(class="form-control-label") }}
+
+                    {% if form.department.errors %}
+                        {{ form.department(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.department.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.department(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
                 <div class="form-group">
